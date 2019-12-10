@@ -1,10 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useReducer } from 'react';
 import './App.css';
+import Title from './components/Title';
+import Todos from './components/Todos';
 
 function App() {
+
   return (
-    <h1>Todo List</h1>
+    <div>
+      <Title />
+      <Todos />
+    </div>
   );
 }
 
