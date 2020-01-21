@@ -2,45 +2,53 @@
 export const initialState = [
         {
             item: 'Build a simple reducer and initial state',
-            completed: false,
-            id: 3892987589
+            completed: true,
+            id: 1
         },
         {
             item: 'Set up state in your component',
-            completed: false,
-            id: 3892987589
+            completed: true,
+            id: 2
         },
         {
             item: 'Adding todos',
             completed: false,
-            id: 3892987589
+            id: 3
         },
         {
             item: 'Toggle the completed field',
             completed: false,
-            id: 3892987589
+            id: 4
         },
         {
             item: 'Clearing completed todos',
             completed: false,
-            id: 3892987589
+            id: 5
         },
         {
             item: 'Styling',
             completed: false,
-            id: 3892987589
+            id: 6
         }
     ];
 
 
-    function reducer(state, action) {
+export function reducer(state, action) {
         switch (action.type) {
-          case 'ADDTODO':
-            // code here
-          case 'TOGGLETODO':
-            // code here
-          case 'REMOVETODO':
-            // code here
+          case 'ADD_TODO':
+            return [
+              ...state,
+              action.payload
+          ]
+          case 'TOGGLE_TODO':
+            return state.map((item) => {
+              return item.id === action.payload ?
+              {...item, completed: !item.completed} :
+              item
+          })
+          case 'REMOVE_COMPLETED_TODO':
+            return state.filter((item) => !item.completed)
+
           default:
             return state
         }
